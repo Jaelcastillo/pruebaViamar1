@@ -12,33 +12,31 @@ namespace PokedexCLI.Repositories
     {
         private readonly string _connectionString;
 
-        // Constructor: Recibe la configuración para leer el appsettings.json automáticamente
         public PokemonRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection")
                 ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'DefaultConnection'.");
         }
 
-        // Método para la Tarea 1.1: Listar todos los Pokémon desde la vista vw_PokemonDetalle
+       
         public IEnumerable<PokemonDetalle> ObtenerTodos()
         {
-            // Uso obligatorio de 'using var connection' para liberar memoria y cerrar la conexión al terminar
+           
             using var connection = new SqlConnection(_connectionString);
 
             string query = "SELECT * FROM vw_PokemonDetalle";
 
-            // Dapper ejecuta la consulta y mapea las filas directamente a una lista de objetos PokemonDetalle
+            
             return connection.Query<PokemonDetalle>(query);
         }
 
-        // Método para Buscar por Coincidencia de Nombre (Previene SQL Injection)
+        // Método para Buscar por Coincidencia de Nombre 
         public IEnumerable<PokemonDetalle> BuscarPorNombre(string textoBusqueda)
         {
             using var connection = new SqlConnection(_connectionString);
 
             string query = "SELECT * FROM vw_PokemonDetalle WHERE Nombre LIKE @Busqueda";
 
-            // Pasamos un objeto anónimo para que Dapper limpie el parámetro de forma segura
             var parametros = new { Busqueda = $"%{textoBusqueda}%" };
 
             return connection.Query<PokemonDetalle>(query, parametros);
