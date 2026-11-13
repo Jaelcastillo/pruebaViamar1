@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PokedexCLI.Models;
@@ -410,7 +410,7 @@ class Program
             if (double.TryParse(Console.ReadLine(), out double valor))
                 return valor;
 
-            Console.WriteLine("Debe ingresar un número válido.");
+            Console.WriteLine("Debe ingresar un numero valido.");
         }
     }
 
@@ -419,30 +419,24 @@ class Program
     {
         Console.Clear();
 
-        Console.WriteLine("=== REGISTRAR NUEVO POKÉMON ===");
+        Console.WriteLine(" REGISTRAR NUEVO POKEMON ");
 
         string nombre;
 
         Console.Write("Nombre: ");
         nombre = Console.ReadLine() ?? "";
 
-        double peso =
-            LeerDouble("Peso: ");
+        double peso = LeerDouble("Peso: ");
 
-        double altura =
-            LeerDouble("Altura: ");
+        double altura = LeerDouble("Altura: ");
 
-        int nPokedex =
-            LeerEntero("Número Pokédex: ");
+        int nPokedex = LeerEntero("Numero Pokedex: ");
 
-        int idRegion =
-            LeerEntero("ID Región: ");
+        int idRegion = LeerEntero("ID Región: ");
 
-        int idTipoPrincipal =
-            LeerEntero("ID Tipo Principal: ");
+        int idTipoPrincipal = LeerEntero("ID Tipo Principal: ");
 
-        int idHabilidad =
-            LeerEntero("ID Habilidad: ");
+        int idHabilidad = LeerEntero("ID Habilidad: ");
 
         try
         {
@@ -459,7 +453,7 @@ class Program
                 ConsoleColor.Green;
 
             Console.WriteLine(
-                "\n[OK] Pokémon registrado correctamente.");
+                "\n[OK] Pokemon registrado correctamente.");
 
             Console.ResetColor();
         }
@@ -472,12 +466,12 @@ class Program
                 $"\n[ERROR] {ex.Message}");
 
             Console.ResetColor();
-
-
-            Console.WriteLine("\nPresione cualquier tecla para volver al menú...");
-            Console.ReadKey();
-
         }
+
+        Console.WriteLine(
+            "\nPresione cualquier tecla para volver al menu");
+
+        Console.ReadKey();
     }
 
     //tarea 2.3 Eliminación Segura
@@ -487,7 +481,7 @@ PokemonRepository repository)
     {
         Console.Clear();
 
-        Console.WriteLine("=== ELIMINAR POKÉMON ===");
+        Console.WriteLine("ELIMINAR POKÉMON ");
 
         int idPokemon =
             LeerEntero("Ingrese el ID del Pokémon: ");
