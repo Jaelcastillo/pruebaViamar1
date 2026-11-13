@@ -10,4 +10,3 @@
         public string Region { get; set; } = string.Empty;
     }
 }
-s
