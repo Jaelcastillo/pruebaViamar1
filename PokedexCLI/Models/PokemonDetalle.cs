@@ -8,5 +8,6 @@
         public double Altura { get; set; }
         public int NPokedex { get; set; }
         public string Region { get; set; } = string.Empty;
+        public string Tipo { get; set; } = string.Empty;
     }
 }
