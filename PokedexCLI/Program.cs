@@ -476,72 +476,71 @@ class Program
 
     //tarea 2.3 Eliminación Segura
 
-    private static void EliminarPokemon(
-PokemonRepository repository)
+private static void EliminarPokemon(
+    PokemonRepository repository)
+{
+    Console.Clear();
+
+    Console.WriteLine("=== ELIMINAR POKÉMON ===");
+
+    int idPokemon =
+        LeerEntero("Ingrese el ID del Pokémon: ");
+
+    try
     {
-        Console.Clear();
+        var pokemon =
+            repository.ObtenerPokemonPorId(idPokemon);
 
-        Console.WriteLine("ELIMINAR POKÉMON ");
-
-        int idPokemon =
-            LeerEntero("Ingrese el ID del Pokémon: ");
-
-        try
+        if (pokemon == null)
         {
-            var pokemon =
-                repository.ObtenerPokemonPorPokedex(idPokemon);
+            Console.WriteLine(
+                "\n>:( No existe un Pokémon con ese ID.");
+        }
+        else
+        {
+            Console.WriteLine(
+                $"\nPokémon encontrado: {pokemon.Nombre}");
 
-            if (pokemon == null)
+            Console.Write(
+                "\n¿Está seguro que desea eliminarlo? (S/N): ");
+
+            string? respuesta = Console.ReadLine();
+
+            if (respuesta?.ToUpper() == "S")
             {
+                repository.EliminarPokemon(idPokemon);
+
+                Console.ForegroundColor =
+                    ConsoleColor.Green;
+
                 Console.WriteLine(
-                    "\n>:( No existe un Pokémon con ese ID.");
+                    "\n[OK] Pokémon eliminado correctamente.");
+
+                Console.ResetColor();
             }
             else
             {
                 Console.WriteLine(
-                    $"\nPokémon encontrado: {pokemon.Nombre}");
-
-                Console.Write(
-                    "\n¿Está seguro que desea eliminarlo? (S/N): ");
-
-                string? respuesta = Console.ReadLine();
-
-                if (respuesta?.ToUpper() == "S")
-                {
-                    repository.EliminarPokemon(idPokemon);
-
-                    Console.ForegroundColor =
-                        ConsoleColor.Green;
-
-                    Console.WriteLine(
-                        "\n[OK] Pokémon eliminado correctamente.");
-
-                    Console.ResetColor();
-                }
-                else
-                {
-                    Console.WriteLine(
-                        "\nOperación cancelada.");
-                }
+                    "\nOperación cancelada.");
             }
         }
-        catch (Exception ex)
-        {
-            Console.ForegroundColor =
-                ConsoleColor.Red;
-
-            Console.WriteLine(
-                $"\n[ERROR] {ex.Message}");
-
-            Console.ResetColor();
-        }
+    }
+    catch (Exception ex)
+    {
+        Console.ForegroundColor =
+            ConsoleColor.Red;
 
         Console.WriteLine(
-            "\nPresione cualquier tecla para volver al menú...");
+            $"\n[ERROR] {ex.Message}");
 
-        Console.ReadKey();
-
+        Console.ResetColor();
     }
+
+    Console.WriteLine(
+        "\nPresione cualquier tecla para volver al menú...");
+
+    Console.ReadKey();
+}
 
     private static void ActualizarPokemon(
     PokemonRepository repository)
