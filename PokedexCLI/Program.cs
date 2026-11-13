@@ -1,6 +1,6 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+
 using PokedexCLI.Models;
 using PokedexCLI.Repositories;
 
