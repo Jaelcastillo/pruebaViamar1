@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PokedexCLI.LoadTests/PokedexCLI.LoadTests.csproj" Id="31ad64d7-3f64-4182-bec1-887178e8baf6" />
+  <Project Path="PokedexCLI.Tests/PokedexCLI.Tests.csproj" Id="413c448e-5b57-47df-bd18-19ec5db29c67" />
+  <Project Path="PokedexCLI/PokedexCLI.csproj" />
+</Solution>
